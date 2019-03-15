@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Config.cpp" />
+    <ClCompile Include="InsideNet.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Work.cpp" />
+    <ClCompile Include="algo_min_huns.cpp" />
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="RoomManager.cpp" />
+    <ClCompile Include="BaseSkill.cpp">
+      <Filter>xiangqi</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessBlock.cpp">
+      <Filter>xiangqi</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessBlockFactory.cpp">
+      <Filter>xiangqi</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessGame.cpp">
+      <Filter>xiangqi</Filter>
+    </ClCompile>
+    <ClCompile Include="ChessManager.cpp">
+      <Filter>xiangqi</Filter>
+    </ClCompile>
+    <ClCompile Include="Point.cpp">
+      <Filter>xiangqi</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Config.h" />
+    <ClInclude Include="InsideNet.h" />
+    <ClInclude Include="Work.h" />
+    <ClInclude Include="algo_min_huns.h" />
+    <ClInclude Include="User.h" />
+    <ClInclude Include="RoomManager.h" />
+    <ClInclude Include="BaseSkill.h">
+      <Filter>xiangqi</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessBlock.h">
+      <Filter>xiangqi</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessBlockFactory.h">
+      <Filter>xiangqi</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessGame.h">
+      <Filter>xiangqi</Filter>
+    </ClInclude>
+    <ClInclude Include="ChessManager.h">
+      <Filter>xiangqi</Filter>
+    </ClInclude>
+    <ClInclude Include="Point.h">
+      <Filter>xiangqi</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleBase.h">
+      <Filter>xiangqi</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemEffect.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="xiangqi">
+      <UniqueIdentifier>{0c521b9e-4d1c-44d6-8026-33ed273ac2a3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
