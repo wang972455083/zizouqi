@@ -6,7 +6,7 @@
 
 
 
-#include <openssl/md5.h>
+
 #include "Table/TableManager.h"
 #include "RoomManager.h"
 #include "ChessManager.h"
@@ -421,7 +421,7 @@ void Work::HanderGateUserMsg(LMsgG2LUserMsg* msg,GateInfo* gate)
 	}
 }
 
-Lstring Work::Md5Hex(const void* src ,Lsize len)
+/*Lstring Work::Md5Hex(const void* src ,Lsize len)
 {
 	unsigned char sign[17];
 	memset(sign,0,sizeof(sign));
@@ -437,7 +437,7 @@ Lstring Work::Md5Hex(const void* src ,Lsize len)
 	}
 
 	return std::string(signHex);
-}
+}*/
 
 
 
