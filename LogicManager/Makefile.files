@@ -2,7 +2,6 @@
 
 
 MODULE_LIBS =   \
-          ./libs/AI.o \
           ./libs/Config.o \
           ./libs/InsideNet.o \
           ./libs/main.o \
@@ -16,7 +15,6 @@ MODULE_LIBS =   \
 
 
 MODULE_SRC =     \
-          ./AI.o \
           ./Config.o \
           ./InsideNet.o \
           ./main.o \
