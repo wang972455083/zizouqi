@@ -748,8 +748,8 @@ void ChessGame::HanderAddBlockToChess(LMsgC2SAddBlockToChess* msg)
 			continue;
 
 		//ClearAttackData();
-
-		AddBlockToChess(pBlock, Point(msg->m_pos_x,msg->m_pos_y));
+		Point to_point(msg->m_pos_x, msg->m_pos_y);
+		AddBlockToChess(pBlock, to_point);
 
 
 	} while (0);
