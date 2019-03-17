@@ -31,6 +31,16 @@ BASE_SRC = ../LBase/LActive.o \
 		../LBase/IPFilter.o\
 		../LBase/TCPClient.o\
 		../LBase/GarbageCollectionService.o\
+		../LBase/ActiveShopCfg.o\
+		../LBase/ChessBoardCfg.o\
+		../LBase/ChessCoinCfg.o\
+		../LBase/ChessRewardCfg.o\
+		../LBase/DBC.o\
+		../LBase/distribution.o\
+		../LBase/string-util.o\
+		../LBase/TableManager.o\
+		../LBase/LChessBlock.o\
+
 
 BASE_LIBS = ./libs/LActive.o \
   	    ./libs/LCharge.o \
@@ -51,6 +61,15 @@ BASE_LIBS = ./libs/LActive.o \
 		./libs/IPFilter.o\
 		./libs/TCPClient.o\
 		./libs/GarbageCollectionService.o\
+		./libs/ActiveShopCfg.o\
+		./libs/ChessBoardCfg.o\
+		./libs/ChessCoinCfg.o\
+		./libs/ChessRewardCfg.o\
+		./libs/DBC.o\
+		./libs/distribution.o\
+		./libs/string-util.o\
+		./libs/TableManager.o\
+		./libs/LChessBlock.o\
 
 
 LIB_BASE_OBJS =  $(JSONLIB) \
