@@ -40,7 +40,7 @@ BASE_SRC = ../LBase/LActive.o \
 		../LBase/IPFilter.o\
 		../LBase/TCPClient.o\
 		../LBase/GarbageCollectionService.o\
-		../LBase/DBSession.o\
+
 		
 		
 
@@ -72,7 +72,7 @@ BASE_LIBS = ./libs/LActive.o \
 		./libs/string-util.o\
 		./libs/TableManager.o\
 		./libs/LChessBlock.o\
-		./LBase/DBSession.o\
+
 
 
 
