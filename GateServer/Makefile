@@ -31,14 +31,14 @@ BASE_SRC = ../LBase/LActive.o \
 		../LBase/IPFilter.o\
 		../LBase/TCPClient.o\
 		../LBase/GarbageCollectionService.o\
-		../LBase/ActiveShopCfg.o\
-		../LBase/ChessBoardCfg.o\
-		../LBase/ChessCoinCfg.o\
-		../LBase/ChessRewardCfg.o\
-		../LBase/DBC.o\
-		../LBase/distribution.o\
-		../LBase/string-util.o\
-		../LBase/TableManager.o\
+		../LBase/Table/ActiveShopCfg.o\
+		../LBase/Table/ChessBoardCfg.o\
+		../LBase/Table/ChessCoinCfg.o\
+		../LBase/Table/ChessRewardCfg.o\
+		../LBase/Table/DBC.o\
+		../LBase/Table/distribution.o\
+		../LBase/Table/string-util.o\
+		../LBase/Table/TableManager.o\
 		../LBase/LChessBlock.o\
 
 
