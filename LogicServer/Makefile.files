@@ -2,39 +2,33 @@
 
 
 MODULE_LIBS =   \
+          ./libs/BaseSkill.o \
+          ./libs/ChessBlock.o \
+          ./libs/ChessBlockFactory.o \
+          ./libs/ChessGame.o \
+          ./libs/ChessManager.o \
           ./libs/Config.o \
-          ./libs/GuangDongJiPingHuHandler.o \
-          ./libs/ActiveManager.o \
-          ./libs/UserManager.o \
-          ./libs/Card.o \
-          ./libs/User.o \
-          ./libs/RobotManager.o \
           ./libs/InsideNet.o \
           ./libs/main.o \
-          ./libs/Desk.o \
-          ./libs/RoomVip.o \
-          ./libs/GameHandler.o \
-          ./libs/GuangDongTuiDaoHuHandler.o \
+          ./libs/Point.o \
+          ./libs/RoomManager.o \
+          ./libs/User.o \
           ./libs/Work.o \
-          ./libs/Robot.o \
-		  ./libs/GuangDongOneHundredHandler.o \
+ 
 
 
 
 MODULE_SRC =     \
+          ./BaseSkill.o \
+          ./ChessBlock.o \
+          ./ChessBlockFactory.o \
+          ./ChessGame.o \
+          ./ChessManager.o \
           ./Config.o \
-          ./GuangDongJiPingHuHandler.o \
-          ./ActiveManager.o \
-          ./UserManager.o \
-          ./Card.o \
-          ./User.o \
-          ./RobotManager.o \
           ./InsideNet.o \
           ./main.o \
-          ./Desk.o \
-          ./RoomVip.o \
-          ./GameHandler.o \
-          ./GuangDongTuiDaoHuHandler.o \
+          ./Point.o \
+          ./RoomManager.o \
+          ./User.o \
           ./Work.o \
-          ./Robot.o \
-		  ./GuangDongOneHundredHandler.o \
+

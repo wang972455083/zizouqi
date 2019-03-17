@@ -5,7 +5,6 @@
     <ClCompile Include="InsideNet.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Work.cpp" />
-    <ClCompile Include="algo_min_huns.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="RoomManager.cpp" />
     <ClCompile Include="BaseSkill.cpp">
@@ -31,7 +30,6 @@
     <ClInclude Include="Config.h" />
     <ClInclude Include="InsideNet.h" />
     <ClInclude Include="Work.h" />
-    <ClInclude Include="algo_min_huns.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="RoomManager.h" />
     <ClInclude Include="BaseSkill.h">

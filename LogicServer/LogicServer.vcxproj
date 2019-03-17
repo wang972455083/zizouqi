@@ -86,7 +86,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="algo_min_huns.cpp" />
     <ClCompile Include="BaseSkill.cpp" />
     <ClCompile Include="ChessBlock.cpp" />
     <ClCompile Include="ChessBlockFactory.cpp" />
@@ -101,7 +100,6 @@
     <ClCompile Include="Work.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="algo_min_huns.h" />
     <ClInclude Include="BaseSkill.h" />
     <ClInclude Include="ChessBlock.h" />
     <ClInclude Include="ChessBlockFactory.h" />
