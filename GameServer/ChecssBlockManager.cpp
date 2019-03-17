@@ -3,7 +3,6 @@
 #include "LLog.h"
 #include "LMsgS2S.h"
 #include "Work.h"
-#include "config.h"
 #include "BaseCommonFunc.h"
 
 
@@ -76,12 +75,6 @@ bool ChecssBlockManager::Final()
 	return true;
 }
 
-Lstring ChecssBlockManager::GetTableName()
-{
-	int region = gConfig.GetRegion();
-	Lstring table_name = "chessblck_" + convertInt2String(region);
-	return table_name;
-}
 
 
 void ChecssBlockManager::Save(BlockPtr block)
@@ -96,9 +89,6 @@ void ChecssBlockManager::Save(BlockPtr block)
 	}
 
 	
-	Lstring str_sql = "UPDATE " + GetTableName();
-	str_sql += " SET";
-
 	//²éÑ¯Êý¾Ý¿â
 	std::stringstream ss;
 	ss << "UPDATE chessBlock SET ";

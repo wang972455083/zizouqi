@@ -25,7 +25,6 @@ public:
 	BlockPtr			CreateBlock(int user_id,int type, int hp, int max_hp, int attack, int max_attack, bool can_upgrade = true,bool in_battle = false);
 	void				AddBlock(BlockPtr block);
 	Lint				GetRandInsertIDFromDB();
-	Lstring				GetTableName();
 	
 	std::list<int>			GetBattleListByUserId(int user_id);
 	std::list<int>			GetBagListByUserId(int user_id);
