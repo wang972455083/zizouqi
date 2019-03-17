@@ -474,7 +474,11 @@ BOOL_INT DBCFile::OpenFromTXT(const CHAR* szFileName)
 	//----------------------------------------------------
 	//打开文件
 	FILE* fp=nullptr;
-	fopen_s(&fp,szFileName, "rb");
+#ifdef WIN32
+	fopen_s(&fp, szFileName, "rb");//这一行
+#else
+	fp = fopen(szFileName, "rb");
+#endif // WIN32
 	if(NULL == fp) return FALSE;
 
 	fseek(fp, 0, SEEK_END);
@@ -500,7 +504,11 @@ BOOL_INT DBCFile::GetVarListFromTXT(const CHAR* szFileName,vector<vector<std::st
 	//----------------------------------------------------
 	//打开文件
 	FILE* fp = nullptr;
-	fopen_s(&fp, szFileName, "rb");
+#ifdef WIN32
+	fopen_s(&fp, szFileName, "rb");//这一行
+#else
+	fp = fopen(szFileName, "rb");
+#endif // WIN32
 	if(NULL == fp) return FALSE;
 
 	fseek(fp, 0, SEEK_END);
