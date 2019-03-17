@@ -2,23 +2,27 @@
 
 
 MODULE_LIBS =   \
+          ./libs/ChecssBlockManager.o \
           ./libs/Config.o \
-          ./libs/UserManager.o \
           ./libs/DbServer.o \
-          ./libs/InsideNet.o \
+          ./libs/DChessBlock.o \
           ./libs/DUser.o \
-          ./libs/Work.o \
-          ./libs/HttpRequest.o \
+          ./libs/InsideNet.o \
           ./libs/main.o \
+          ./libs/UserManager.o \        
+          ./libs/Work.o \
+          
 
 
 
 MODULE_SRC =     \
+          ./ChecssBlockManager.o \
           ./Config.o \
-          ./UserManager.o \
           ./DbServer.o \
-          ./InsideNet.o \
+          ./DChessBlock.o \
           ./DUser.o \
-          ./Work.o \
-          ./HttpRequest.o \
+          ./InsideNet.o \
           ./main.o \
+          ./Work.o \
+          ./UserManager.o \
+          
