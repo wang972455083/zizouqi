@@ -47,7 +47,7 @@ public:
 	LTime&			GetCurTime();
 	
 	//md5加密算法
-	Lstring			Md5Hex(const void* data,Lsize size);
+	//Lstring			Md5Hex(const void* data,Lsize size);
 public:
 	//处理http消息 
 	void			HanderHttp(LMsgHttp* msg);	

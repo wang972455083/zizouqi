@@ -11,7 +11,7 @@
 
 
 #include <boost/regex.hpp>
-#include "RemoteLogThread.h"
+//#include "RemoteLogThread.h"
 
 #include "QuickStartManager.h"
 #include "UserManager.h"
@@ -97,7 +97,7 @@ void Work::Start()
 
 	LRunnable::Start();
 
-	gRLT.start();
+	//gRLT.start();
 
 	ConnectToCenter();
 
@@ -130,7 +130,7 @@ void Work::Stop()
 
 	LRunnable::Stop();
 
-	gRLT.stop();
+	//gRLT.stop();
 
 	m_gcService.Stop();
 
@@ -613,7 +613,7 @@ void Work::HanderGateUserMsg(LMsgG2LMUserMsg* msg,GateInfo* gate)
 	}
 }
 
-Lstring Work::Md5Hex(const void* src ,Lsize len)
+/*Lstring Work::Md5Hex(const void* src ,Lsize len)
 {
 	unsigned char sign[17];
 	memset(sign,0,sizeof(sign));
@@ -630,7 +630,7 @@ Lstring Work::Md5Hex(const void* src ,Lsize len)
 
 	return std::string(signHex);
 }
-
+*/
 
 
 void Work::HanderUserReLogin(Lint id,Lint seed,Lint gateId,Llong gateUserId,Lstring& md5,Lstring& ip)
