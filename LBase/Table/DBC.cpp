@@ -3,7 +3,7 @@
 #include <assert.h>
 #include "DBC.h"
 #include <exception>
-
+#include <string.h>
 INT	DBCFile::_ConvertStringToVector(const CHAR* strStrINTgSource, vector< std::string >& vRet, const CHAR* szKey, BOOL_INT bOneOfKey, BOOL_INT bIgnoreEmpty)
 {
 	vRet.clear();
