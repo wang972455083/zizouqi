@@ -227,6 +227,15 @@ enum MOVE_DIREC
 
 };
 
+
+enum BAG_BLOCK_PROERTY
+{
+	BP_HP,
+	BP_MAX_HP,
+	BP_ATTACK,
+	BP_MAX_ATTACK,
+};
+
 #if _LINUX
 typedef bool BOOL;
 #define TRUE                1

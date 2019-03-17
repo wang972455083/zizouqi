@@ -263,6 +263,14 @@ void Work::HanderGateUserMsg(LMsgG2GameUserMsg*msg)
 	case MSG_C_2_S_QUICK_ROOM_OPT:
 		HanderUserQuickStart((LMsgC2SQuickRoomOpt*)msg->m_userMsg);
 		break;
+
+	case MSG_C_2_S_GET_BAG_BLOCK_LIST:
+		HanderUserGetBagBlockList(msg->m_sp,(LMsgC2SGetBagBlockList*)msg->m_userMsg);
+		break;
+
+	case MSG_C_2_S_BAG_BLOCK_UPGRADE:
+		HanderUserbagBlockUpgrade(msg->m_sp, (LMsgC2SBagBlockUpgrade*)msg->m_userMsg);
+		break;
 	default:
 		break;
 	}
@@ -606,4 +614,106 @@ void Work::HanderUserQuickStart(LMsgC2SQuickRoomOpt* msg)
 	}
 
 	m_logicManager->Send(send.GetSendBuff());
+}
+
+void Work::HanderUserGetBagBlockList(LSocketPtr sp,LMsgC2SGetBagBlockList* msg)
+{
+	if (nullptr == msg)
+		return;
+
+	UserPtr user = gUserManager.GetUserById(msg->m_user_id);
+	if (nullptr == user)
+		return;
+
+	LMsgS2CGetBagBlockList send;
+	
+
+	list<int> battle_list = gChessBlockManager.GetBattleListByUserId(msg->m_user_id);
+	for (auto it = battle_list.begin(); it != battle_list.end(); ++it)
+	{
+		BlockPtr block = gChessBlockManager.GetChessBlockById(*it);
+		if (block == nullptr)
+			continue;
+
+		S2CBlock msg_block;
+		msg_block.m_block_id = block->m_block.m_block_id;
+		msg_block.m_type= block->m_block.m_type;
+		msg_block.m_hp = block->m_block.m_hp;
+		msg_block.m_max_hp = block->m_block.m_max_hp;
+		msg_block.m_attack = block->m_block.m_attack;
+		msg_block.m_max_attack = block->m_block.m_max_attack;
+		msg_block.m_can_upgrade = block->m_block.m_can_upgrade;
+
+		send.m_bag_blocks.push_back(msg_block);
+	}
+
+	SendUserMsg(sp, msg->m_user_id, send);
+}
+
+void Work::HanderUserbagBlockUpgrade(LSocketPtr sp, LMsgC2SBagBlockUpgrade* msg)
+{
+	if (nullptr == msg)
+		return;
+
+	LMsgS2CBagBlockUpgrade send;
+	send.m_block_id = msg->m_block_id;
+	send.m_type = msg->m_type;
+
+	bool exist = false;
+	list<int> battle_list = gChessBlockManager.GetBattleListByUserId(msg->m_user_id);
+	for (auto it = battle_list.begin(); it != battle_list.end(); ++it)
+	{
+
+		if (*it == msg->m_block_id);
+		{
+			exist = true;
+			break;
+		}
+	}
+
+
+	int result = 1;
+	if (exist)
+	{
+		BlockPtr block = gChessBlockManager.GetChessBlockById(msg->m_block_id);
+		if (block == nullptr)
+			return;
+
+		switch (msg->m_type)
+		{
+		case BP_HP:
+		{
+			if (block->m_block.m_hp < block->m_block.m_max_hp)
+			{
+				block->m_block.m_hp++;
+				gChessBlockManager.Save(block);
+				result = 0;
+				break;
+			}
+		}
+		break;
+		case BP_MAX_HP:
+		{
+		}
+		break;
+		case BP_ATTACK:
+		{
+			if (block->m_block.m_attack < block->m_block.m_max_attack)
+			{
+				block->m_block.m_attack++;
+				gChessBlockManager.Save(block);
+				result = 0;
+				break;
+			}
+		}
+		break;
+		case BP_MAX_ATTACK:
+		{
+		}
+		break;
+		}
+	}
+
+	send.m_result = result;
+	SendUserMsg(sp, msg->m_user_id, send);
 }

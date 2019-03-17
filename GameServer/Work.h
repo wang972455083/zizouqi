@@ -72,6 +72,8 @@ public:
 	void			HanderUserCreateXiangQiRoom(LMsgC2SCreateXiangQiRoom* msg);
 	void			HanderUserAddIntoXiangQiRoom(LMsgC2SAddIntoRoom* msg);
 	void			HanderUserQuickStart(LMsgC2SQuickRoomOpt* msg);
+	void			HanderUserGetBagBlockList(LSocketPtr sp,LMsgC2SGetBagBlockList* msg);
+	void			HanderUserbagBlockUpgrade(LSocketPtr sp, LMsgC2SBagBlockUpgrade* msg);
 public:
 	void			SendUserMsg(LSocketPtr sp,int user_id,LMsg& msg);
 private:

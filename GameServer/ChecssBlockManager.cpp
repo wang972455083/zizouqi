@@ -101,7 +101,7 @@ void ChecssBlockManager::Save(BlockPtr block)
 
 	//²éÑ¯Êý¾Ý¿â
 	std::stringstream ss;
-	ss << "UPDATE chessBlock SET";
+	ss << "UPDATE chessBlock SET ";
 	ss << "Hp='" << block->m_block.m_hp << "',";
 	ss << "MaxHp='" << block->m_block.m_max_hp << "',";
 	ss << "Attack='" << block->m_block.m_attack << "',";

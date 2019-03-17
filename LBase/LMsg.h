@@ -117,7 +117,11 @@ enum LMSG_ID
 	MSG_C_2_S_QUICK_ROOM_OPT = 19,	//快速加入房间操作
 	MSG_S_2_C_QUICK_ROOM_OPT = 20,	//
 	
+	MSG_C_2_S_GET_BAG_BLOCK_LIST = 21,	
+	MSG_S_2_C_GET_BAG_BLOCK_LIST = 22,	
 
+	MSG_C_2_S_BAG_BLOCK_UPGRADE = 23,
+	MSG_S_2_C_BAG_BLOCK_UPGRADE = 24,
 
 	MSG_TO_GAME_MAX_MSG = 1000,   //以上是转发到gameServer里的
 
@@ -2532,6 +2536,158 @@ struct LMsgS2CChessRewardUse :public LMsgSC
 		return new LMsgS2CChessRewardUse();
 	}
 };
+
+
+struct LMsgC2SGetBagBlockList :public LMsgSC
+{
+	int m_tag;
+	
+	LMsgC2SGetBagBlockList() :LMsgSC(MSG_C_2_S_GET_BAG_BLOCK_LIST)
+	{
+		m_tag = 0;
+	}
+
+	virtual bool Read(msgpack::object& obj)
+	{
+		ReadMapData(obj, NAME_TO_STR(m_user_id), m_user_id);
+		ReadMapData(obj, NAME_TO_STR(m_tag), m_tag);
+		return true;
+	}
+
+	virtual bool Write(msgpack::packer<msgpack::sbuffer>& pack)
+	{
+		WriteMap(pack, 3);
+		WriteKeyValue(pack, NAME_TO_STR(m_msgId), m_msgId);
+		WriteKeyValue(pack, NAME_TO_STR(m_user_id), m_user_id);
+		WriteKeyValue(pack, NAME_TO_STR(m_tag), m_tag);
+
+
+		return true;
+	}
+
+	virtual LMsg* Clone()
+	{
+		return new LMsgC2SGetBagBlockList();
+	}
+};
+
+
+struct LMsgS2CGetBagBlockList :public LMsgSC
+{
+	std::vector<S2CBlock>	m_bag_blocks;
+
+	LMsgS2CGetBagBlockList() :LMsgSC(MSG_S_2_C_GET_BAG_BLOCK_LIST)
+	{
+	}
+
+	virtual bool Read(msgpack::object& obj)
+	{
+		ReadMapData(obj, NAME_TO_STR(m_user_id), m_user_id);
+		ReadMapData(obj, NAME_TO_STR(m_bag_blocks), m_bag_blocks);
+
+	
+		return true;
+	}
+
+	virtual bool Write(msgpack::packer<msgpack::sbuffer>& pack)
+	{
+		WriteMap(pack, 3);
+		WriteKeyValue(pack, NAME_TO_STR(m_msgId), m_msgId);
+		WriteKeyValue(pack, NAME_TO_STR(m_user_id), m_user_id);
+		WriteKeyValue(pack, NAME_TO_STR(m_bag_blocks), m_bag_blocks);
+		
+
+
+		return true;
+	}
+
+	virtual LMsg* Clone()
+	{
+		return new LMsgS2CGetBagBlockList();
+	}
+};
+
+struct LMsgC2SBagBlockUpgrade :public LMsgSC
+{
+	int m_block_id;
+	int m_type;
+
+	LMsgC2SBagBlockUpgrade() :LMsgSC(MSG_C_2_S_BAG_BLOCK_UPGRADE)
+	{
+		m_block_id = 0;
+		m_type = 0;
+	}
+
+	virtual bool Read(msgpack::object& obj)
+	{
+		ReadMapData(obj, NAME_TO_STR(m_user_id), m_user_id);
+		ReadMapData(obj, NAME_TO_STR(m_block_id), m_block_id);
+		ReadMapData(obj, NAME_TO_STR(m_type), m_type);
+		return true;
+	}
+
+	virtual bool Write(msgpack::packer<msgpack::sbuffer>& pack)
+	{
+		WriteMap(pack, 4);
+		WriteKeyValue(pack, NAME_TO_STR(m_msgId), m_msgId);
+		WriteKeyValue(pack, NAME_TO_STR(m_user_id), m_user_id);
+		WriteKeyValue(pack, NAME_TO_STR(m_block_id), m_block_id);
+		WriteKeyValue(pack, NAME_TO_STR(m_type), m_type);
+
+		return true;
+	}
+
+	virtual LMsg* Clone()
+	{
+		return new LMsgC2SBagBlockUpgrade();
+	}
+};
+
+
+struct LMsgS2CBagBlockUpgrade :public LMsgSC
+{
+	int m_result;
+	int m_block_id;
+	int m_type;
+
+	LMsgS2CBagBlockUpgrade() :LMsgSC(MSG_S_2_C_BAG_BLOCK_UPGRADE)
+	{
+		m_result = 0;
+		m_block_id = 0;
+		m_type = 0;
+	}
+
+	virtual bool Read(msgpack::object& obj)
+	{
+		ReadMapData(obj, NAME_TO_STR(m_user_id), m_user_id);
+		ReadMapData(obj, NAME_TO_STR(m_result), m_result);
+		ReadMapData(obj, NAME_TO_STR(m_block_id), m_block_id);
+		ReadMapData(obj, NAME_TO_STR(m_type), m_type);
+
+
+
+		return true;
+	}
+
+	virtual bool Write(msgpack::packer<msgpack::sbuffer>& pack)
+	{
+		WriteMap(pack, 5);
+		WriteKeyValue(pack, NAME_TO_STR(m_msgId), m_msgId);
+		WriteKeyValue(pack, NAME_TO_STR(m_user_id), m_user_id);
+		WriteKeyValue(pack, NAME_TO_STR(m_result), m_result);
+		WriteKeyValue(pack, NAME_TO_STR(m_block_id), m_block_id);
+		WriteKeyValue(pack, NAME_TO_STR(m_type), m_type);
+
+
+		return true;
+	}
+
+	virtual LMsg* Clone()
+	{
+		return new LMsgS2CBagBlockUpgrade();
+	}
+};
+
 
 //*******************************************************************
 

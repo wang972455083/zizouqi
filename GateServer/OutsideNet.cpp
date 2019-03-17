@@ -138,6 +138,9 @@ void OutsideNet::CreateMsgIdTable()
 	m_msgIdTable.insert(MSG_C_2_S_CHESS_BLOCK_ATTACK);
 	m_msgIdTable.insert(MSG_C_2_S_CHESS_BLOCK_UPGRADE);
 	m_msgIdTable.insert(MSG_C_2_S_CHESS_BLOCK_ZHUI_SHA);
+
+	m_msgIdTable.insert(MSG_C_2_S_GET_BAG_BLOCK_LIST);
+	m_msgIdTable.insert(MSG_C_2_S_BAG_BLOCK_UPGRADE);
 }
 
 bool OutsideNet::IsValidMsgId(Lint id)

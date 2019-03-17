@@ -217,6 +217,13 @@ bool LMsgFactory::Init()
 	RegestMsg(new LMsgS2SAddIntoXiangQiRoom());
 	RegestMsg(new LMsgL2LMAddIntoRoomResult());
 	RegestMsg(new LMsgGame2LMQuickStartOpt());
+
+	RegestMsg(new LMsgC2SGetBagBlockList());
+	RegestMsg(new LMsgS2CGetBagBlockList());
+
+	RegestMsg(new LMsgC2SBagBlockUpgrade());
+	RegestMsg(new LMsgS2CBagBlockUpgrade());
+
 	return true;
 }
 
