@@ -4,7 +4,7 @@
 #include "DBC.h"
 #include <exception>
 
-INT	DBCFile::_ConvertStringToVector(const CHAR* strStrINTgSource, vector< std::string >& vRet, const CHAR* szKey, BOOL bOneOfKey, BOOL bIgnoreEmpty)
+INT	DBCFile::_ConvertStringToVector(const CHAR* strStrINTgSource, vector< std::string >& vRet, const CHAR* szKey, BOOL_INT bOneOfKey, BOOL_INT bIgnoreEmpty)
 {
 	vRet.clear();
 	
@@ -119,7 +119,7 @@ const CHAR* DBCFile::_GetLineFromMemory(CHAR* pStringBuf, INT nBufSize, const CH
 	return pMem;
 }
 
-BOOL DBCFile::OpenFromMemory(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName)
+BOOL_INT DBCFile::OpenFromMemory(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName)
 {
 	assert(pMemory && pDeadEnd);
 	//----------------------------------------------------
@@ -134,7 +134,7 @@ BOOL DBCFile::OpenFromMemory(const CHAR* pMemory, const CHAR* pDeadEnd, const CH
 	}
 }
 
-BOOL DBCFile::OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName)
+BOOL_INT DBCFile::OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName)
 {
 	register const char* pMem = pMemory;
 
@@ -224,7 +224,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEn
 	return TRUE;
 }
 
-BOOL DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName)
+BOOL_INT DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName)
 {
 	//----------------------------------------------------
 	//分析列数和类型
@@ -395,7 +395,7 @@ BOOL DBCFile::OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd,
 	return TRUE;
 }
 
-BOOL DBCFile::GetFileVarList_Text(vector<vector<std::string> >& vecList,const CHAR* pMemory, const CHAR* pDeadEnd)
+BOOL_INT DBCFile::GetFileVarList_Text(vector<vector<std::string> >& vecList,const CHAR* pMemory, const CHAR* pDeadEnd)
 {
 	vecList.clear();
 	//----------------------------------------------------
@@ -466,7 +466,7 @@ BOOL DBCFile::GetFileVarList_Text(vector<vector<std::string> >& vecList,const CH
 	return TRUE;
 }
 
-BOOL DBCFile::OpenFromTXT(const CHAR* szFileName)
+BOOL_INT DBCFile::OpenFromTXT(const CHAR* szFileName)
 {
 	assert(szFileName);
 
@@ -485,14 +485,14 @@ BOOL DBCFile::OpenFromTXT(const CHAR* szFileName)
 	fread(pMemory, 1, nFileSize, fp);
 	pMemory[nFileSize] = 0;
 
-	BOOL bRet = OpenFromMemory(pMemory, pMemory+nFileSize+1, szFileName);
+	BOOL_INT bRet = OpenFromMemory(pMemory, pMemory+nFileSize+1, szFileName);
 
 	delete[] pMemory; pMemory = 0;
 	fclose(fp);
 	return bRet;
 }
 
-BOOL DBCFile::GetVarListFromTXT(const CHAR* szFileName,vector<vector<std::string> >& vecList)
+BOOL_INT DBCFile::GetVarListFromTXT(const CHAR* szFileName,vector<vector<std::string> >& vecList)
 {
 	assert(szFileName);
 
@@ -511,7 +511,7 @@ BOOL DBCFile::GetVarListFromTXT(const CHAR* szFileName,vector<vector<std::string
 	fread(pMemory, 1, nFileSize, fp);
 	pMemory[nFileSize] = 0;
 
-	BOOL bRet = GetFileVarList_Text(vecList,pMemory, pMemory+nFileSize+1);
+	BOOL_INT bRet = GetFileVarList_Text(vecList,pMemory, pMemory+nFileSize+1);
 
 	delete[] pMemory; pMemory = 0;
 	fclose(fp);

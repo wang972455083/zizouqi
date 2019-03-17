@@ -12,7 +12,7 @@
 
 #define VOID				void			//标准空
 typedef unsigned long       DWORD;
-typedef int                 BOOL;
+typedef int                 BOOL_INT;
 typedef unsigned char       BYTE;
 typedef unsigned short      WORD;
 typedef float               FLOAT;
@@ -74,19 +74,19 @@ public:
 
 public:
 	//打开文本文件，生成一个数据库
-	BOOL					OpenFromTXT(const CHAR* szFileName);
+	BOOL_INT					OpenFromTXT(const CHAR* szFileName);
 	//根据内存中的文件打开
-	BOOL					OpenFromMemory(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
+	BOOL_INT					OpenFromMemory(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
 	//
-	BOOL					GetVarListFromTXT(const CHAR* szFileName,vector<vector<std::string> >& vecList);
+	BOOL_INT					GetVarListFromTXT(const CHAR* szFileName,vector<vector<std::string> >& vecList);
 protected:
 	//读取文本格式内容
-	BOOL					OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
+	BOOL_INT					OpenFromMemoryImpl_Text(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
 	//读取二进制格式内容
-	BOOL					OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
+	BOOL_INT					OpenFromMemoryImpl_Binary(const CHAR* pMemory, const CHAR* pDeadEnd, const CHAR* szFileName=0);
 
 	//生成列表
-	BOOL					GetFileVarList_Text(vector<vector<std::string> >& vecList,const CHAR* pMemory, const CHAR* pDeadEnd);
+	BOOL_INT					GetFileVarList_Text(vector<vector<std::string> >& vecList,const CHAR* pMemory, const CHAR* pDeadEnd);
 
 public:
 	//按索引查找(第一列为索引)
@@ -137,7 +137,7 @@ protected:
 
 public:
 
-	static INT			_ConvertStringToVector(const CHAR* strStrINTgSource, vector< std::string >& vRet, const CHAR* szKey, BOOL bOneOfKey, BOOL bIgnoreEmpty);
+	static INT			_ConvertStringToVector(const CHAR* strStrINTgSource, vector< std::string >& vRet, const CHAR* szKey, BOOL_INT bOneOfKey, BOOL_INT bIgnoreEmpty);
 	//从内存中字符串读取一行文本(按照换行符)
 	static const CHAR*	_GetLineFromMemory(CHAR* pStringBuf, INT nBufSize, const CHAR* pMemory, const CHAR* pDeadEnd);
 	//比较两个值是否相等
