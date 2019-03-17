@@ -7,7 +7,7 @@
 
 
 #include <openssl/md5.h>
-#include "table/TableManager.h"
+#include "Table/TableManager.h"
 #include "RoomManager.h"
 #include "ChessManager.h"
 
