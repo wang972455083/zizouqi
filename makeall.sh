@@ -4,24 +4,14 @@ echo "building XLCenterServer"
 
 svn up
 
-cd ./CenterServer
+cd ./GameServer
 sh make.sh
 make clean
 make
 
-cd ..
-echo "building XLLoginGate"
-cd ./LoginGate
-sh make.sh
-make clean
-make
-
-cd ..
-echo "building XLLogicDB"
-cd ./LogicDB
-sh make.sh
-make clean
-make
+echo "build end...."
+cp XLGameServer /root/wangzg/Server/GameServer
+echo "copy end...."
 
 cd ..
 echo "building XLLogicManager"
@@ -30,12 +20,20 @@ sh make.sh
 make clean
 make
 
+echo "build end...."
+cp XLLogicManager /root/wangzg/Server/LogicManager
+echo "copy end...."
+
 cd ..
 echo "building XLLogicServer"
 cd ./LogicServer
 sh make.sh
 make clean
 make
+
+echo "build end...."
+cp XLLogicServer /root/wangzg/Server/LogicServer
+echo "copy end...."
 
 cd ..
 echo "building XLGateServer"
@@ -44,19 +42,10 @@ sh make.sh
 make clean
 make
 
-cd ..
-echo "building XLMatchServer"
-cd ./MatchServer
-sh make.sh
-make clean
-make
+echo "build end...."
+cp XLGateServer /root/wangzg/Server/GateServer
+echo "copy end...."
 
-cd ..
-echo "building TeamServer"
-cd ./TeamServer
-sh make.sh
-make clean
-make
 
 echo "building finished!!!"
 

@@ -2,39 +2,29 @@
 cd /opt/CardServer/
 ulimit -c unlimited
 
-echo "start CenterServer"
-cd /opt/CardServer/CenterServer
-./XLCenterServer
+echo "start GameServer"
+cd /root/wangzg/Server/GameServer
+./XLGameServer
 
-
-echo "start LogicDB"
-sleep 1
-cd /opt/Cardserver/LogicDB
-./XLLogicDB
 
 
 
 echo "start LogicManager"
-cd /opt/CardServer/LogicManager
+cd /root/wangzg/Server/LogicManager
 ./XLLogicManager
 sleep 1
 
 
 
 echo "start LogicServer"
-cd /opt/CardServer/LogicServer
+cd /root/wangzg/Server/LogicServer
 ./XLLogicServer
 sleep 1
 
 
 echo "start GateServer"
-cd /opt/CardServer/GateServer
+cd /root/wangzg/Server/GateServer
 ./XLGateServer
-sleep 1
-
-echo "start GateServer"
-cd /opt/CardServer/LoginGate
-./XLLoginGate
 sleep 1
 
 
