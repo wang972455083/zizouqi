@@ -2,23 +2,26 @@
 
 
 MODULE_LIBS =   \
+          ./libs/AI.o \
           ./libs/Config.o \
-          ./libs/ActiveManager.o \
-          ./libs/UserManager.o \
-          ./libs/User.o \
-          ./libs/DeskManager.o \
-          ./libs/Work.o \
           ./libs/InsideNet.o \
           ./libs/main.o \
+          ./libs/QuickStartManager.o \
+          ./libs/RoomManager.o \
+          ./libs/UserManager.o \
+          ./libs/Work.o \
+         
+
 
 
 
 MODULE_SRC =     \
+          ./AI.o \
           ./Config.o \
-          ./ActiveManager.o \
-          ./UserManager.o \
-          ./User.o \
-          ./DeskManager.o \
-          ./Work.o \
           ./InsideNet.o \
           ./main.o \
+          ./QuickStartManager.o \
+          ./RoomManager.o \
+          ./UserManager.o \
+          ./Work.o \
+        

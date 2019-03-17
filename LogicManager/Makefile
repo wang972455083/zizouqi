@@ -2,6 +2,7 @@ include Makefile.define
 include Makefile.files
 default:all
 
+
 JSONLIBSRC = ../extlib/src/lib_json/json_value.o \
 	  ../extlib/src/lib_json/json_writer.o \
 	  ../extlib/src/lib_json/json_reader.o \
@@ -12,6 +13,15 @@ JSONLIB = ./libs/json_value.o \
 
 
 BASE_SRC = ../LBase/LActive.o \
+		../LBase/Table/ActiveShopCfg.o\
+		../LBase/Table/ChessBoardCfg.o\
+		../LBase/Table/ChessCoinCfg.o\
+		../LBase/Table/ChessRewardCfg.o\
+		../LBase/Table/DBC.o\
+		../LBase/Table/distribution.o\
+		../LBase/Table/string-util.o\
+		../LBase/Table/TableManager.o\
+		../LBase/LChessBlock.o\
   	    ../LBase/LCharge.o \
   	    ../LBase/LIni.o \
   	    ../LBase/LLog.o \
@@ -30,9 +40,7 @@ BASE_SRC = ../LBase/LActive.o \
 		../LBase/IPFilter.o\
 		../LBase/TCPClient.o\
 		../LBase/GarbageCollectionService.o\
-		../LBase/Base64.o\
-		../LBase/RLogHttp.o\
-		../LBase/RemoteLogThread.o\
+		
 
 BASE_LIBS = ./libs/LActive.o \
   	    ./libs/LCharge.o \
@@ -53,9 +61,15 @@ BASE_LIBS = ./libs/LActive.o \
 		./libs/IPFilter.o\
 		./libs/TCPClient.o\
 		./libs/GarbageCollectionService.o\
-		./libs/Base64.o\
-		./libs/RLogHttp.o\
-		./libs/RemoteLogThread.o\
+		./libs/ActiveShopCfg.o\
+		./libs/ChessBoardCfg.o\
+		./libs/ChessCoinCfg.o\
+		./libs/ChessRewardCfg.o\
+		./libs/DBC.o\
+		./libs/distribution.o\
+		./libs/string-util.o\
+		./libs/TableManager.o\
+		./libs/LChessBlock.o\
 
 
 LIB_BASE_OBJS =  $(JSONLIB) \
@@ -69,7 +83,7 @@ PATS =  $(JSONLIBSRC) \
 
 
 
-TARGET_BIN = XLLogicManager
+TARGET_BIN = XLGateServer
 COPY=@cp -f 
 REMOVE=@\rm -rf
 
@@ -80,8 +94,7 @@ all: $(TARGET_BIN) Makefile
 $(TARGET_BIN):$(PATS)
 	$(REMOVE) ./libs/*
 	$(COPY) $(PATS) ./libs/
-	$(CC) -o $(TARGET_BIN) $(LIB_BASE_OBJS) $(LIBS) -lpthread -fPIC -m64   -std=c++11 -lstdc++
-	rm -rf *.o   $(LIB_BASE)  $(LIB_BASE_OBJS) $(PATH)   $(PATS)
+	$(CC) $(LIBS) -lpthread -fPIC -m64    -std=c++11 -lstdc++ -o $(TARGET_BIN) $(LIB_BASE_OBJS) 
 
 
 clean:
