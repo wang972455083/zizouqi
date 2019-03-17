@@ -83,7 +83,7 @@ PATS =  $(JSONLIBSRC) \
 
 
 
-TARGET_BIN = XLGateServer
+TARGET_BIN = XLLogicManagerServer
 COPY=@cp -f 
 REMOVE=@\rm -rf
 
