@@ -2,7 +2,6 @@ echo "start to build"
 
 echo "building XLCenterServer"
 
-svn up
 
 cd ./GameServer
 sh make.sh
