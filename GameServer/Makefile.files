@@ -9,8 +9,9 @@ MODULE_LIBS =   \
           ./libs/DUser.o \
           ./libs/InsideNet.o \
           ./libs/main.o \
-          ./libs/UserManager.o \        
           ./libs/Work.o \
+          ./libs/UserManager.o \        
+          
           
 
 
