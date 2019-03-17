@@ -2,8 +2,8 @@
 
 
 MODULE_LIBS =   \
-          ./libs/ChecssBlockManager.o \
           ./libs/Config.o \
+          ./libs/ChecssBlockManager.o \         
           ./libs/DbServer.o \
           ./libs/DChessBlock.o \
           ./libs/DUser.o \
@@ -17,8 +17,8 @@ MODULE_LIBS =   \
 
 
 MODULE_SRC =     \
-          ./ChecssBlockManager.o \
           ./Config.o \
+          ./ChecssBlockManager.o \ 
           ./DbServer.o \
           ./DChessBlock.o \
           ./DUser.o \
