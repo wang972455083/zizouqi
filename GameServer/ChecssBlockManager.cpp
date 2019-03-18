@@ -32,7 +32,7 @@ void ChecssBlockManager::LoadBloackInfo()
 	while (true)
 	{
 		std::stringstream ss;
-		ss << "select Id, Type, Hp, MaxHp, Attack, MaxAttack, CanUpgrade, InBattle, UserId FROM chessblock ORDER BY Id DESC LIMIT ";
+		ss << "select Id, Type, Hp, MaxHp, Attack, MaxAttack, CanUpgrade, InBattle, UserId FROM chessBlock ORDER BY Id DESC LIMIT ";
 		ss << limitfrom << "," << count;
 
 		if (mysql_real_query(m, ss.str().c_str(), ss.str().size()))
