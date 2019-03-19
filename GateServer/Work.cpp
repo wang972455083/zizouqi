@@ -151,14 +151,14 @@ void Work::Tick(LTime& cur)
 		{
 			if (GetCurTime().Secs() - it->second.timestamp > 60)
 			{
-				/*LMsgKick kick;
+				LMsgKick kick;
 				kick.m_sp = it->first;
 				it->first->Stop();
-				m_spMap.erase(it++);
+				it = m_spMap.erase(it);
 
 				HanderUserKick(&kick);
-				LLOG_DEBUG("Out Time Big Than 60 Kick User");*/
-				++it;
+				LLOG_DEBUG("Out Time Big Than 60 Kick User");
+				
 			}
 			else
 			{
@@ -208,6 +208,11 @@ void Work::HanderMsg(LMsg* msg)
 	case MSG_CLIENT_IN:
 		HanderClientIn((LMsgIn*)msg);
 		break;
+	case MSG_C_2_S_HEART:
+	{
+		HanderUserHeart((LMsgC2SHeart*)msg);
+	}
+	break;
 	case MSG_HTTP:
 		HanderHttp((LMsgHttp*)msg);
 		break;
@@ -349,6 +354,18 @@ void Work::HanderClientIn(LMsgIn* msg)
 
 	//这里添加一个新连接进来
 	gGateUserManager.CreateUser(msg->m_sp);
+}
+
+void Work::HanderUserHeart(LMsgC2SHeart* msg)
+{
+	auto it = m_spMap.find(msg->m_sp);
+	if (it != m_spMap.end())
+	{
+		it->second.timestamp = GetCurTime().Secs();
+
+		LMsgS2CHeart send;
+		msg->m_sp->Send(send.GetSendBuff());
+	}
 }
 
 void Work::HanderHttp(LMsgHttp* msg)
@@ -629,7 +646,7 @@ void Work::HanderKeepAliveAck(LMsgS2SKeepAliveAck* msg)
 
 void Work::CheckMsgFrequency(Lint interval)
 {
-	Lint threshold = gConfig.GetMsgFrequency() * interval;
+	/*Lint threshold = gConfig.GetMsgFrequency() * interval;
 
 	for(auto iter = m_spMap.begin(); iter != m_spMap.end();)
 	{
@@ -650,7 +667,7 @@ void Work::CheckMsgFrequency(Lint interval)
 			iter->second.msgCount = 0;
 			iter++;
 		}
-	}
+	}*/
 }
 
 

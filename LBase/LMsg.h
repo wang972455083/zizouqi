@@ -531,20 +531,23 @@ struct LMsgS2CMsg :public LMsgSC
 //客户端发送心跳包
 struct LMsgC2SHeart:public LMsgSC
 {
-	//Lint	m_time;//时间戳
+	Lint	m_time;//时间戳
 
 	LMsgC2SHeart() :LMsgSC(MSG_C_2_S_HEART){}
 
 	virtual bool Read(msgpack::object& obj)
 	{
-		//buff.Read(m_time);
+		ReadMapData(obj, NAME_TO_STR(m_time), m_time);
 		return true;
 	}
 
 	virtual bool Write(msgpack::packer<msgpack::sbuffer>& pack)
 	{
-		WriteMap(pack, 1);
-		WriteKeyValue(pack, "m_msgId", m_msgId);
+		WriteMap(pack, 3);
+		WriteKeyValue(pack, NAME_TO_STR(m_msgId), m_msgId);
+		WriteKeyValue(pack, NAME_TO_STR(m_user_id), m_user_id);
+		WriteKeyValue(pack, NAME_TO_STR(m_time), m_time);
+
 		return true;
 	}
 
@@ -556,11 +559,10 @@ struct LMsgC2SHeart:public LMsgSC
 //服务器发送心跳包
 struct LMsgS2CHeart :public LMsgSC
 {
-	Lint     m_returnId;
 	Lint	m_time;//时间戳
 
 	LMsgS2CHeart() :LMsgSC(MSG_S_2_C_HEART)
-		,m_time(0), m_returnId(0)
+		,m_time(0)
 	{}
 
 	virtual bool Read(msgpack::object& obj)
@@ -572,9 +574,9 @@ struct LMsgS2CHeart :public LMsgSC
 
 	virtual bool Write(msgpack::packer<msgpack::sbuffer>& pack)
 	{
-		WriteMap(pack,2);
+		WriteMap(pack,3);
 		WriteKeyValue(pack, NAME_TO_STR(m_msgId), m_msgId);
-		WriteKeyValue(pack, NAME_TO_STR(m_returnId), m_returnId);
+		WriteKeyValue(pack, NAME_TO_STR(m_user_id), m_user_id);
 		WriteKeyValue(pack, NAME_TO_STR(m_time), m_time);
 		return true;
 	}

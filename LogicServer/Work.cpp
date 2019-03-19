@@ -518,9 +518,11 @@ void Work::HanderQuitRoom(int gate_id,LMsgC2SQuitRoom* msg)
 void Work::HanderQuickCreateRoomOpt(LMsgLM2LQuickCreateRoomOpt* msg)
 {
 	LMsgL2LMQuickCreateRoomOpt send;
+	send.m_room_id = msg->m_room_id;
 	int result = 0;
 	do
 	{
+
 		int room_id = msg->m_room_id;
 		if (gRoomManager.GetRoomById(room_id))
 		{
@@ -591,7 +593,7 @@ void Work::HanderLM2LUserLogin(LMsgLM2LUserLogin* msg)
 			user->SetGateServerId(msg->m_gate_id);
 
 			LMsgS2CRoomInfoWhenRelogin send;
-			//room->FillRoomInfo(user->GetUserId(), send.m_room);
+			room->FillRoomMsg(send.m_room);
 			user->Send(send);
 		}
 	}

@@ -565,7 +565,6 @@ void ChessGame::UseRewardItem(int item_id)
 
 	m_reward_effect->Clear();
 
-	item_id = 1002;
 
 	RewardItemTbl* pTbl = ChessRewardCfg::Instance().GetChessReward(item_id);
 	if (pTbl == nullptr)

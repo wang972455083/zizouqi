@@ -33,17 +33,29 @@ void OutsideNet::RecvMsgPack(LBuffPtr recv, LSocketPtr s)
 		msgpack::object obj = unpack.get();
 		ReadMapData(obj, "m_msgId", msgid);
 
-		if (msgid == 3001)
+		/*if (msgid == 3001)
 		{
 			int roomid = 0;
 			ReadMapData(obj, "m_room_id", roomid);
 
 			LLOG_ERROR("m_room_id = %d",roomid);
-		}
+		}*/
 	
 		if (msgid > MSG_ERROR_MSG && msgid < MSG_S_2_C_MAX)//玩家消息
 		{
 			LLOG_ERROR("First msgid = %d, body size = %d", msgid, recv->Size());
+
+			if (msgid == MSG_C_2_S_HEART)
+			{
+				LMsg* msg_heart = LMsgFactory::Instance().CreateMsg(msgid);
+				msg_heart->m_sp = s;
+				if (msg_heart)
+				{
+					msg_heart->Read(obj);
+				}
+				gWork.Push(msg_heart);
+				return;
+			}
 			
 			//发送到GameServer里的
 			if (msgid > 0 && msgid < MSG_TO_GAME_MAX_MSG)

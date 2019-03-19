@@ -32,6 +32,7 @@ public:
 	void			HanderHttp(LMsgHttp* msg);	
 	//处理客户端连接上来消息
 	void			HanderClientIn(LMsgIn* msg);
+	void			HanderUserHeart(LMsgC2SHeart* msg);
 	//处理客户端掉线的消息 
 	void			HanderUserKick(LMsgKick* msg);
 	//处理LogicManager同步的Logic消息
