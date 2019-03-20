@@ -182,8 +182,8 @@ enum CHESS_COLOR
 
 enum PosLimit
 {
-	POS_LIMIT_X = 8,
-	POS_LIMIT_Y = 9
+	POS_LIMIT_X = 9,
+	POS_LIMIT_Y = 10
 };
 
 enum TYPE_CHESS

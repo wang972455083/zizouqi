@@ -664,7 +664,7 @@ void Work::HanderUserbagBlockUpgrade(LSocketPtr sp, LMsgC2SBagBlockUpgrade* msg)
 	for (auto it = battle_list.begin(); it != battle_list.end(); ++it)
 	{
 
-		if (*it == msg->m_block_id);
+		if (*it == msg->m_block_id)
 		{
 			exist = true;
 			break;

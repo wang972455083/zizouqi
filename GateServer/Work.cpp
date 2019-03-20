@@ -365,6 +365,8 @@ void Work::HanderUserHeart(LMsgC2SHeart* msg)
 
 		LMsgS2CHeart send;
 		msg->m_sp->Send(send.GetSendBuff());
+
+		LLOG_DEBUG("Work::HanderUserHeart already in ");
 	}
 }
 

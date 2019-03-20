@@ -226,8 +226,8 @@ bool ChessMa::IsCanMove(const Point& pos)
 			return true;
 	}
 
-	if (abs(pos.m_posX - from_point.m_posX) == 1 &&
-		abs(pos.m_posY - from_point.m_posY) == 2)
+	if (abs(pos.m_posX - from_point.m_posX) == 2 &&
+		abs(pos.m_posY - from_point.m_posY) == 1)
 	{
 		int min_x = from_point.m_posX;
 		if (pos.m_posX < min_x)
@@ -400,7 +400,7 @@ bool ChessPao::IsCanAttack(std::shared_ptr<ChessBlock> pBlock)
 
 		int nCnt = 0;
 		int x = to_point.m_posX;
-		for (int y = min + 1; y < max, y <= POS_LIMIT_Y; ++y)
+		for (int y = min + 1; y < max; ++y)
 		{
 			if (m_Game->IsHaveBlock(Point(x,y)))
 			{
