@@ -182,23 +182,27 @@ bool ChessXiang::IsCanMove(const Point& pos)
 
 	Point from_point = m_Pos;
 
-	if (abs(pos.m_posX - from_point.m_posX) != 2)
+	int dis_x = abs(pos.m_posX - from_point.m_posX);
+
+	if (dis_x > 2)
 		return false;
 
-	if (abs(pos.m_posY - from_point.m_posY) != 2)
+	int dis_y = abs(pos.m_posY - from_point.m_posY);
+	if (dis_y > 2)
 		return false;
 
-	int min_x = from_point.m_posX;
-	if (pos.m_posX < min_x)
-		min_x = pos.m_posX;
 
-	int min_y = from_point.m_posY;
-	if (pos.m_posY < min_y)
-		min_y = pos.m_posY;
-
-	Point mid_point = Point(min_x + 1, min_y + 1);
-	if (m_Game&&m_Game->IsHaveBlock(mid_point))
+	if (dis_x != dis_y)
 		return false;
+
+	Point dir = Point((pos.m_posX - from_point.m_posX) / abs(pos.m_posX - from_point.m_posX), pos.m_posY - from_point.m_posY / abs(pos.m_posY - from_point.m_posY));
+
+	for (int step = 1; step < dis_x; ++step)
+	{
+		Point mid_point = Point(from_point.m_posX + dir.m_posX, from_point.m_posY + dir.m_posY);
+		if (m_Game&&m_Game->IsHaveBlock(mid_point))
+			return false;
+	}
 
 	return true;
 }
@@ -437,6 +441,7 @@ bool ChessPao::IsCanAttack(std::shared_ptr<ChessBlock> pBlock)
 	return false;
 }
 
+//兵至多走两个位置
 bool ChessBing::IsCanMove(const Point& pos)
 {
 	if (!IsInBoundary(pos))
@@ -449,7 +454,7 @@ bool ChessBing::IsCanMove(const Point& pos)
 
 		if (from_point.m_posX == pos.m_posX)
 		{
-			if (pos.m_posY - from_point.m_posY == 1)
+			if (pos.m_posY - from_point.m_posY <= 2)
 			{
 				return true;
 			}
@@ -459,7 +464,7 @@ bool ChessBing::IsCanMove(const Point& pos)
 		{
 			if (pos.m_posY == from_point.m_posY)
 			{
-				if (abs(pos.m_posX - from_point.m_posX) == 1)
+				if (abs(pos.m_posX - from_point.m_posX) <= 2)
 				{
 					return true;
 				}
@@ -471,7 +476,7 @@ bool ChessBing::IsCanMove(const Point& pos)
 	{
 		if (from_point.m_posX == pos.m_posX)
 		{
-			if (from_point.m_posY - pos.m_posY == 1)
+			if (from_point.m_posY - pos.m_posY <= 2)
 			{
 				return true;
 			}
@@ -481,7 +486,7 @@ bool ChessBing::IsCanMove(const Point& pos)
 		{
 			if (pos.m_posY == from_point.m_posY)
 			{
-				if (abs(pos.m_posX - from_point.m_posX) == 1)
+				if (abs(pos.m_posX - from_point.m_posX) <= 2)
 				{
 					return true;
 				}
