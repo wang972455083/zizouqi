@@ -197,7 +197,7 @@ std::shared_ptr<ChessBlock> ChessGame::CreateBlocksFromBagList(int color,std::sh
 {
 	std::shared_ptr<ChessBlock> pBlock = nullptr;
 
-	if (bag_block->m_use_cnt > 0)
+	if (bag_block->m_use_cnt <= 0)
 	{
 		pBlock = ChessBlockFactory::getInstance().CreateChessBlock(this, color, bag_block->m_block_id, bag_block->m_type, bag_block->m_hp, bag_block->m_max_hp, bag_block->m_attack, bag_block->m_max_attack);
 	}
