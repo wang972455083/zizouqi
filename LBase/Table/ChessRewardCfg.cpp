@@ -5,6 +5,7 @@
 #include "string-util.h"
 #include "distribution.h"
 #include <time.h>
+#include "../LTool.h"
 
 const char* ChessRewardCfg::szChessRewardFile = "table/chessReward.dat";
 
@@ -69,7 +70,8 @@ RewardItemTbl* ChessRewardCfg::GetChessReward(int id)
 
 int ChessRewardCfg::GetRandItem()
 {
-	int key = rand() % m_total_weight;
+	
+	int key = L_Rand(0,m_total_weight);
 
 	int weight = 0;
 
@@ -78,7 +80,7 @@ int ChessRewardCfg::GetRandItem()
 		weight += it->second->m_weight;
 		if (weight >= key)
 			return it->first;
-
-		return 0;
 	}
+
+	return 0;
 }
