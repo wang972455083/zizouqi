@@ -1266,6 +1266,15 @@ void Work::HanderUserLogout(LMsgG2SUserLogOut* msg)
 	user->SetOnline(false);
 	user->SetUserSp(nullptr);
 
+	if (user->IsQuickStart())
+	{
+
+		if (gQuickStart.RemoveUser(msg->m_user_id))
+		{
+			user->SetQuickStartStatus(false);
+		}
+	}
+
 	if (user->IsInRoom())
 	{
 		int room_id = user->GetRoomId();
